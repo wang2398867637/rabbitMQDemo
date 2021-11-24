@@ -182,14 +182,14 @@ public class RabbitDistributionConsumer {
 			}
 			
 			//加锁时间,到期时长,时间单位
-			while (!redisLock.tryLock(6, 7, TimeUnit.SECONDS)) {
+			while (!redisLock.tryLock(400, 500, TimeUnit.MILLISECONDS)) {
 				log.info("等待获取锁");
-				condition.await(1 ,TimeUnit.SECONDS);
+				condition.await(100 ,TimeUnit.MILLISECONDS);
 			}
 			
 			log.info(name + " 拿到锁");
 			
-			TimeUnit.SECONDS.sleep(2);
+			TimeUnit.MILLISECONDS.sleep(300);
 			
 			log.info(name + " 运行结束");
 			
