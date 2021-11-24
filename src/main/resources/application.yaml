@@ -1,0 +1,32 @@
+server:
+  port: 8080
+spring:
+  profiles:
+    active: @spring.profiles.active@
+  servlet:
+    multipart:
+      max-file-size: 50MB #设置单个文件大小
+      max-request-size: 50MB #设置单次请求文件的总大小
+  application:
+    name: rabbit-provider
+  main:
+    allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
+  jackson:
+    locale: zh_CN
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  mvc:
+    date-format: 'yyyy-MM-dd HH:mm:ss'
+  thymeleaf:
+    cache: false
+    #开启事务注解,可以不用try-catch
+    #transaction:
+    #rollback-on-commit-failure: true
+rabbit:
+  #交换机名称
+  direct:
+    name: "TestDirectExchange"
+    routing: "TestDirectRouting"
+    #队列名称
+  queue:
+    name: "TestDirectQueue"
