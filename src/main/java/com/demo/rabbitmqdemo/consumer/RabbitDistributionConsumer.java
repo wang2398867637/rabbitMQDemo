@@ -47,14 +47,14 @@ public class RabbitDistributionConsumer {
 	private final ReentrantLock lock = new ReentrantLock();
 	Condition condition = lock.newCondition();
 	
-/*	@RabbitHandler
+	@RabbitHandler
 	@RabbitListener(queues = queue)
 	public void process(Map testMessage, Channel channel, @Headers Map<String, Object> map) {
 		log.info("分发一号  : " + testMessage.toString());
 		
 		CyclicBarrier barrier = new CyclicBarrier(9);
 		
-		for (int i = 1; i <= 8; i++) {
+		for (int i = 1; i <= 3; i++) {
 			int finalI = i;
 			taskExecutor.execute(() -> {
 				boolean store = this.decrementProductStore("一号" + finalI);
@@ -86,7 +86,7 @@ public class RabbitDistributionConsumer {
 				ex.printStackTrace();
 			}
 		}
-	}*/
+	}
 	
 	
 	@RabbitHandler
